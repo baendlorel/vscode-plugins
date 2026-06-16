@@ -8,7 +8,10 @@ import { build } from './build.js';
 export function publish(who: string | undefined) {
   const info = getPackageInfo(who);
   build(who);
+
   const binPath = join(info.path, 'bin');
   mkdirSync(binPath, { recursive: true });
-  execSync(`vsce package -o ./bin`, { stdio: 'inherit', cwd: info.path });
+
+  const ignoreFile = join(import.meta.dirname, '..', 'configs', '.vscodeignore');
+  execSync(`vsce package --ignoreFile ${ignoreFile} -o ./bin`, { stdio: 'inherit', cwd: info.path });
 }

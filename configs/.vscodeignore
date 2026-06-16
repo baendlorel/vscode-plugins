@@ -1,0 +1,17 @@
+draft
+scripts
+artifact
+assets/example.png
+.oxlintrc.json
+
+pnpm-lock.yaml
+eslint.config.*
+.vscode/**
+.vscode-test/**
+src/**
+.gitignore
+node_modules/**
+tests/**
+tsconfig.build.json
+pnpm-lock.yaml
+node_modules
