@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "types": ["node"],
+    "resolveJsonModule": true,
+    "resolvePackageJsonImports": true,
+    "declaration": false,
+    "allowArbitraryExtensions": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "outDir": "out",
+    "rootDir": "src"
+  },
+  "include": ["./src/**/*.ts", "./src/**/*.d.ts", "./tests/**/*.ts"]
+}

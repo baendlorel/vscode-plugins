@@ -1,0 +1,122 @@
+{
+  "name": "secret-notes",
+  "displayName": "Secret Notes",
+  "description": "Encrypt and decrypt text files in VS Code with AES-256-GCM.",
+  "description_zh": "在 VS Code 中使用 AES-256-GCM 对文本文件进行加密与解密。",
+  "version": "0.3.3",
+  "purpose": "vscode-extension",
+  "publisher": "KasukabeTsumugi",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "author": {
+    "email": "futami16237@gmail.com",
+    "name": "Kasukabe Tsumugi"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "encrypt",
+    "decrypt",
+    "aes",
+    "security",
+    "notes",
+    "text"
+  ],
+  "repository": {
+    "url": "https://github.com/baendlorel/secret-notes"
+  },
+  "license": "MIT",
+  "icon": "assets/logo.png",
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
+  },
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:secret-notes.encrypt",
+    "onCommand:secret-notes.decrypt"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "secret-notes.encrypt",
+        "title": "%command.encrypt.title%",
+        "category": "%extension.category%",
+        "icon": {
+          "light": "assets/lock-light.svg",
+          "dark": "assets/lock-dark.svg"
+        }
+      },
+      {
+        "command": "secret-notes.decrypt",
+        "title": "%command.decrypt.title%",
+        "category": "%extension.category%",
+        "icon": {
+          "light": "assets/unlock-light.svg",
+          "dark": "assets/unlock-dark.svg"
+        }
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "secret-notes.encrypt",
+          "group": "navigation@0",
+          "when": "secretNotes.canEncrypt"
+        },
+        {
+          "command": "secret-notes.decrypt",
+          "group": "navigation@0",
+          "when": "secretNotes.canDecrypt"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "%configuration.title%",
+      "properties": {
+        "secret-notes.fileExtensions": {
+          "type": "array",
+          "default": [
+            "txt",
+            "md"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "%configuration.fileExtensions.description%"
+        },
+        "secret-notes.exclude": {
+          "type": "array",
+          "default": [
+            "node_modules",
+            "dist",
+            "out",
+            "build",
+            "coverage",
+            ".git",
+            ".next",
+            ".turbo"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "%configuration.exclude.description%"
+        },
+        "secret-notes.passwordKeepMinute": {
+          "type": "number",
+          "default": 5,
+          "minimum": 0,
+          "markdownDescription": "%configuration.passwordKeepMinute.description%"
+        },
+        "secret-notes.debug": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "%configuration.debug.description%"
+        }
+      }
+    }
+  }
+}

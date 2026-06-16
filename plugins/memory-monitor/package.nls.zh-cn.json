@@ -1,0 +1,4 @@
+{
+  "configuration.title": "内存监控器",
+  "configuration.targets.description": "要监控的进程列表。"
+}

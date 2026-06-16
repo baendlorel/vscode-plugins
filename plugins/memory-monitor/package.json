@@ -1,0 +1,84 @@
+{
+  "name": "memory-monitor",
+  "displayName": "Memory Monitor",
+  "description": "Monitor memory usage of specified processes in real-time",
+  "description_zh": "实时监控指定进程的内存使用量",
+  "version": "0.1.0",
+  "purpose": "vscode-extension",
+  "publisher": "KasukabeTsumugi",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "author": {
+    "email": "futami16237@gmail.com",
+    "name": "Kasukabe Tsumugi"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "memory",
+    "monitor",
+    "process",
+    "performance",
+    "system"
+  ],
+  "homepage": "https://github.com/baendlorel/memory-monitor#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baendlorel/memory-monitor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/baendlorel/memory-monitor/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/icon.png",
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [],
+    "configuration": {
+      "title": "%configuration.title%",
+      "properties": {
+        "memory-monitor.poll-interval": {
+          "type": "number",
+          "default": 3,
+          "minimum": 1,
+          "description": "%configuration.poll-interval.description%"
+        },
+        "memory-monitor.targets": {
+          "type": "array",
+          "default": [],
+          "description": "%configuration.targets.description%",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "%configuration.targets.name.description%"
+              },
+              "processName": {
+                "type": "string",
+                "description": "%configuration.targets.processName.description%"
+              }
+            },
+            "required": [
+              "name",
+              "processName"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "mem-usage-ts": "^0.1.2",
+    "smol-toml": "^1.6.1"
+  }
+}

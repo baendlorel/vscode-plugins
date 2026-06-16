@@ -1,0 +1,147 @@
+{
+  "name": "simple-launcher",
+  "displayName": "Simple Launcher",
+  "description": "A tool that helps you quickly launch commands while monitoring program memory usage",
+  "description_zh": "一个可以帮助你快速启动命令的工具，同时可以监控程序内存用量",
+  "version": "0.2.2",
+  "purpose": "vscode-extension",
+  "publisher": "KasukabeTsumugi",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "author": {
+    "email": "futami16237@gmail.com",
+    "name": "Kasukabe Tsumugi"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "titlebar",
+    "color",
+    "theme",
+    "project",
+    "workspace",
+    "customization"
+  ],
+  "homepage": "https://github.com/baendlorel/simple-launcher#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baendlorel/simple-launcher.git"
+  },
+  "bugs": {
+    "url": "https://github.com/baendlorel/simple-launcher/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/icon.png",
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "simple-launcher.menu",
+        "title": "%command.menu.title%",
+        "category": "Simple Launcher"
+      },
+      {
+        "command": "simple-launcher.import-commands",
+        "title": "%command.import-commands.title%",
+        "category": "Simple Launcher"
+      },
+      {
+        "command": "simple-launcher.config-panel",
+        "title": "%command.config-panel.title%",
+        "category": "Simple Launcher"
+      }
+    ],
+    "configuration": {
+      "title": "%configuration.title%",
+      "properties": {
+        "simple-launcher.monitor-interval": {
+          "type": "number",
+          "default": 3,
+          "minimum": 1,
+          "description": "%configuration.monitor-interval.description%"
+        },
+        "simple-launcher.custom-commands": {
+          "type": "array",
+          "default": [],
+          "description": "%configuration.custom-commands.description%",
+          "items": {
+            "type": "object",
+            "properties": {
+              "command": {
+                "type": "string",
+                "description": "%configuration.custom-commands.command.description%"
+              },
+              "displayName": {
+                "type": "string",
+                "description": "%configuration.custom-commands.displayName.description%"
+              },
+              "monitorTarget": {
+                "type": "string",
+                "description": "%configuration.custom-commands.monitorTarget.description%"
+              },
+              "cwd": {
+                "type": "string",
+                "description": "%configuration.custom-commands.cwd.description%"
+              }
+            },
+            "required": [
+              "command"
+            ]
+          }
+        },
+        "simple-launcher.current-command": {
+          "type": [
+            "null",
+            "object"
+          ],
+          "default": null,
+          "description": "%configuration.current-command.description%",
+          "properties": {
+            "command": {
+              "type": "string",
+              "description": "%configuration.current-command.command.description%"
+            },
+            "displayName": {
+              "type": "string",
+              "description": "%configuration.current-command.displayName.description%"
+            },
+            "monitorTarget": {
+              "type": "string",
+              "description": "%configuration.current-command.monitorTarget.description%"
+            },
+            "cwd": {
+              "type": "string",
+              "description": "%configuration.current-command.cwd.description%"
+            }
+          },
+          "required": [
+            "command"
+          ]
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lines": "clear && find ./src -type f \\( -name \"*.ts\" -o -name \"*.tsx\" -o -name \"*.js\" -o -name \"*.mjs\" -o -name \"*.cjs\" -o -name \"*.cpp\" -o -name \"*.h\" -o -name \"*.py\"  -o -name \"*.css\" -o -name \"*.rs\" -o -name \"*.rc\" \\) | xargs wc -l",
+    "test-build": "vite build --mode development",
+    "build": "vite build",
+    "watch": "vite build --watch --mode development",
+    "check": "tsc --noEmit -p tsconfig.build.json",
+    "lint": "oxlint .",
+    "pub": "vsce package -o ./bin --no-dependencies",
+    "publish": "pnpm build && vsce publish"
+  },
+  "dependencies": {
+    "mem-usage-ts": "^0.1.4",
+    "smol-toml": "^1.6.1"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": false,
+    "resolvePackageJsonImports": false,
+    "declaration": false,
+    "allowArbitraryExtensions": true,
+    "outDir": "out",
+    "rootDir": "src"
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts"],
+  "exclude": ["tests/**/*", "plugins/**/*.ts", "node_modules", ".vscode-test"]
+}
