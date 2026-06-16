@@ -3,7 +3,7 @@ import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { getPackageInfo } from './common/package-info.js';
 
-export async function build(who: string | undefined) {
+export function build(who: string | undefined) {
   const info = getPackageInfo(who);
 
   console.log(info.name, info.path);
