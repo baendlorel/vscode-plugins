@@ -130,16 +130,6 @@
       }
     }
   },
-  "scripts": {
-    "lines": "clear && find ./src -type f \\( -name \"*.ts\" -o -name \"*.tsx\" -o -name \"*.js\" -o -name \"*.mjs\" -o -name \"*.cjs\" -o -name \"*.cpp\" -o -name \"*.h\" -o -name \"*.py\"  -o -name \"*.css\" -o -name \"*.rs\" -o -name \"*.rc\" \\) | xargs wc -l",
-    "test-build": "vite build --mode development",
-    "build": "vite build",
-    "watch": "vite build --watch --mode development",
-    "check": "tsc --noEmit -p tsconfig.build.json",
-    "lint": "oxlint .",
-    "pub": "vsce package -o ./bin --no-dependencies",
-    "publish": "pnpm build && vsce publish"
-  },
   "dependencies": {
     "mem-usage-ts": "^0.1.4",
     "smol-toml": "^1.6.1"

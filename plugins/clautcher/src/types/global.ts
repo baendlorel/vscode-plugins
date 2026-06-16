@@ -1,3 +1,4 @@
+import path from 'node:path';
 import pkg from '../../package.json';
 import pkgNls from '../../package.nls.json';
 
@@ -19,7 +20,13 @@ export type CommandName = _StripPrefixAndTitle<I18NKeys>;
 
 declare global {
   const __IS_DEV__: boolean;
+  interface String {
+    join(...args: string[]): string;
+  }
 }
+String.prototype.join = function (...args: string[]) {
+  return path.join(this.toString(), ...args);
+};
 
 declare module 'vscode' {
   export namespace l10n {
