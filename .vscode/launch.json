@@ -9,7 +9,7 @@
       "outFiles": ["${workspaceFolder}/plugins/simple-laucher/out/**/*.js"],
       "preLaunchTask": {
         "type": "npm",
-        "script": "test-build"
+        "script": "test-build simple-laucher"
       },
       "cwd": "${workspaceFolder}/plugins/simple-laucher"
     },
@@ -21,7 +21,7 @@
       "outFiles": ["${workspaceFolder}/plugins/colorful-markdown/out/**/*.js"],
       "preLaunchTask": {
         "type": "npm",
-        "script": "test-build"
+        "script": "test-build colorful-markdown"
       },
       "cwd": "${workspaceFolder}/plugins/colorful-markdown"
     },
@@ -33,7 +33,7 @@
       "outFiles": ["${workspaceFolder}/plugins/colorful-titlebar/out/**/*.js"],
       "preLaunchTask": {
         "type": "npm",
-        "script": "test-build"
+        "script": "test-build colorful-titlebar"
       },
       "cwd": "${workspaceFolder}/plugins/colorful-titlebar"
     },
@@ -45,7 +45,7 @@
       "outFiles": ["${workspaceFolder}/plugins/jetbrains-titlebar/out/**/*.js"],
       "preLaunchTask": {
         "type": "npm",
-        "script": "test-build"
+        "script": "test-build jetbrains-titlebar"
       },
       "cwd": "${workspaceFolder}/plugins/jetbrains-titlebar"
     },
@@ -57,7 +57,7 @@
       "outFiles": ["${workspaceFolder}/plugins/memory-monitor/out/**/*.js"],
       "preLaunchTask": {
         "type": "npm",
-        "script": "test-build"
+        "script": "test-build memory-monitor"
       },
       "cwd": "${workspaceFolder}/plugins/memory-monitor"
     },
@@ -69,7 +69,7 @@
       "outFiles": ["${workspaceFolder}/plugins/secret-notes/out/**/*.js"],
       "preLaunchTask": {
         "type": "npm",
-        "script": "build"
+        "script": "build secret-notes"
       },
       "cwd": "${workspaceFolder}/plugins/secret-notes"
     },
@@ -81,7 +81,7 @@
       "outFiles": ["${workspaceFolder}/plugins/clautcher/out/**/*.js"],
       "preLaunchTask": {
         "type": "npm",
-        "script": "test-build"
+        "script": "test-build clautcher"
       },
       "cwd": "${workspaceFolder}/plugins/clautcher"
     }
