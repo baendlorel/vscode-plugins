@@ -1,0 +1,77 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "启动: simple-laucher",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": ["--extensionDevelopmentPath=${workspaceFolder}/plugins/simple-laucher"],
+      "outFiles": ["${workspaceFolder}/plugins/simple-laucher/out/**/*.js"],
+      "preLaunchTask": {
+        "type": "npm",
+        "script": "test-build"
+      },
+      "cwd": "${workspaceFolder}/plugins/simple-laucher"
+    },
+    {
+      "name": "启动: colorful-markdown",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": ["--extensionDevelopmentPath=${workspaceFolder}/plugins/colorful-markdown"],
+      "outFiles": ["${workspaceFolder}/plugins/colorful-markdown/out/**/*.js"],
+      "preLaunchTask": {
+        "type": "npm",
+        "script": "test-build"
+      },
+      "cwd": "${workspaceFolder}/plugins/colorful-markdown"
+    },
+    {
+      "name": "启动: colorful-titlebar",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": ["--extensionDevelopmentPath=${workspaceFolder}/plugins/colorful-titlebar"],
+      "outFiles": ["${workspaceFolder}/plugins/colorful-titlebar/out/**/*.js"],
+      "preLaunchTask": {
+        "type": "npm",
+        "script": "test-build"
+      },
+      "cwd": "${workspaceFolder}/plugins/colorful-titlebar"
+    },
+    {
+      "name": "启动: jetbrains-titlebar",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": ["--extensionDevelopmentPath=${workspaceFolder}/plugins/jetbrains-titlebar"],
+      "outFiles": ["${workspaceFolder}/plugins/jetbrains-titlebar/out/**/*.js"],
+      "preLaunchTask": {
+        "type": "npm",
+        "script": "test-build"
+      },
+      "cwd": "${workspaceFolder}/plugins/jetbrains-titlebar"
+    },
+    {
+      "name": "启动: memory-monitor",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": ["--extensionDevelopmentPath=${workspaceFolder}/plugins/memory-monitor"],
+      "outFiles": ["${workspaceFolder}/plugins/memory-monitor/out/**/*.js"],
+      "preLaunchTask": {
+        "type": "npm",
+        "script": "test-build"
+      },
+      "cwd": "${workspaceFolder}/plugins/memory-monitor"
+    },
+    {
+      "name": "启动: secret-notes",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": ["--extensionDevelopmentPath=${workspaceFolder}/plugins/secret-notes"],
+      "outFiles": ["${workspaceFolder}/plugins/secret-notes/out/**/*.js"],
+      "preLaunchTask": {
+        "type": "npm",
+        "script": "build"
+      },
+      "cwd": "${workspaceFolder}/plugins/secret-notes"
+    }
+  ]
+}

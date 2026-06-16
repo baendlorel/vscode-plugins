@@ -3,7 +3,7 @@ import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { getPackageInfo } from './common/package-info.js';
 
-export function build(who: string | undefined) {
+export function build(who: string | undefined, isTestBuild = false) {
   const info = getPackageInfo(who);
 
   console.log(info.name, info.path);
@@ -14,5 +14,8 @@ export function build(who: string | undefined) {
 
   const viteConfig = join(import.meta.dirname, '..', 'configs', 'vite.config.ts');
 
-  execSync(`vite build --config ${viteConfig} ${info.path}`, { stdio: 'inherit', env: info.env });
+  execSync(`vite build --config ${viteConfig} ${info.path} ${isTestBuild ? '--mode development' : ''}`, {
+    stdio: 'inherit',
+    env: info.env,
+  });
 }

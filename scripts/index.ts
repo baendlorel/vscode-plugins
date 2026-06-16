@@ -10,6 +10,8 @@ if (task === '--publish') {
   publish(who);
 } else if (task === '--build') {
   build(who);
+} else if (task === '--test-build') {
+  build(who, true);
 } else if (task === '--test') {
   test(who);
 } else {
