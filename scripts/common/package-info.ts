@@ -26,7 +26,7 @@ export const getPackagePath = (who: string | undefined) => {
     console.log('getPackagePath: No package specified.');
     process.exit(1);
   }
-  return join(import.meta.dirname, '..', '..', 'packages', who);
+  return join(import.meta.dirname, '..', '..', 'plugins', who);
 };
 
 export const externalFromPeerDependencies = (packagePath: string) => {

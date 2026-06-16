@@ -1,17 +1,15 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import replace from '@rollup/plugin-replace';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 
-const rootDir = path.dirname(fileURLToPath(import.meta.url));
-const srcDir = path.resolve(rootDir, 'src');
-const json = readFileSync(path.resolve(rootDir, 'package.json'), 'utf-8');
-
 export default defineConfig(({ mode }) => {
   const isDev = mode === 'development';
+  const libPath = process.env.LIB_PACKAGE_PATH as string;
+  const srcDir = path.join(libPath, 'src');
+  const json = readFileSync(path.join(libPath, 'package.json'), 'utf-8');
 
   return {
     build: {
@@ -44,6 +42,7 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         '@/': `${srcDir}/`,
+        '@shared/': path.join(import.meta.dirname, '..', 'plugins', '_shared', '/'),
       },
     },
   };

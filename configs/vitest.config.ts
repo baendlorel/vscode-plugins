@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitest/config';
-import { getAliases } from './scripts/aliases';
+import { getAliases } from '../scripts/aliases';
 
 export default defineConfig(() => {
   return {
