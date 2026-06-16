@@ -1,0 +1,47 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "npm: build",
+      "type": "npm",
+      "script": "build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [
+        "$tsc"
+      ]
+    },
+    {
+      "label": "clean dist",
+      "type": "shell",
+      "command": "rm -rf dist",
+      "group": "build"
+    },
+    {
+      "label": "tsc compile",
+      "type": "shell",
+      "command": "tsc",
+      "args": [
+        "--project",
+        "tsconfig.json",
+        "--outDir",
+        "dist"
+      ],
+      "group": "build",
+      "problemMatcher": [
+        "$tsc"
+      ]
+    },
+    {
+      "label": "build all",
+      "dependsOn": [
+        "clean dist",
+        "tsc compile"
+      ],
+      "dependsOrder": "sequence",
+      "group": "build"
+    }
+  ]
+}
