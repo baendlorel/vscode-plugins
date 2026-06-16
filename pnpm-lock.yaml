@@ -57,6 +57,32 @@ importers:
         specifier: ^4.1.9
         version: 4.1.9(@types/node@25.9.3)(@vitest/coverage-v8@4.1.9)(vite@8.0.16(@types/node@25.9.3)(esbuild@0.28.1)(terser@5.48.0)(tsx@4.22.4))
 
+  plugins/colorful-markdown: {}
+
+  plugins/colorful-titlebar: {}
+
+  plugins/jetbrains-titlebar: {}
+
+  plugins/memory-monitor:
+    dependencies:
+      mem-usage-ts:
+        specifier: ^0.1.2
+        version: 0.1.4
+      smol-toml:
+        specifier: ^1.6.1
+        version: 1.6.1
+
+  plugins/secret-notes: {}
+
+  plugins/simple-laucher:
+    dependencies:
+      mem-usage-ts:
+        specifier: ^0.1.4
+        version: 0.1.4
+      smol-toml:
+        specifier: ^1.6.1
+        version: 1.6.1
+
 packages:
 
   '@azu/format-text@1.0.2':
@@ -1430,6 +1456,9 @@ packages:
   mdurl@2.0.0:
     resolution: {integrity: sha512-Lf+9+2r+Tdp5wXDXC4PcIBjTDtq4UKjCPMQhKIuzpJNW0b96kVqSwW0bT7FhRSfmAiFYgP+SCRvdrDozfh0U5w==}
 
+  mem-usage-ts@0.1.4:
+    resolution: {integrity: sha512-NaVQXV6lCNK/mFa6xASjp/weUtckf7ugSVySTT6FgY/w3S20tMKJocrlIFZ0N2SXEvkAcA8uRSvAMc642ctRsQ==}
+
   merge2@1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
     engines: {node: '>= 8'}
@@ -1721,6 +1750,10 @@ packages:
   smob@1.6.2:
     resolution: {integrity: sha512-RQsvleCbF8cVHEv+xuDGaA4pOizFqJ0GgjtMSRo6oP8pnN7WsigHgVGey6aILRBKv4W2YOMHLqbKdnB6hpB9fw==}
     engines: {node: '>=20.0.0'}
+
+  smol-toml@1.6.1:
+    resolution: {integrity: sha512-dWUG8F5sIIARXih1DTaQAX4SsiTXhInKf1buxdY9DIg4ZYPZK5nGM1VRIYmEbDbsHt7USo99xSLFu5Q1IqTmsg==}
+    engines: {node: '>= 18'}
 
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
@@ -3320,6 +3353,8 @@ snapshots:
 
   mdurl@2.0.0: {}
 
+  mem-usage-ts@0.1.4: {}
+
   merge2@1.4.1: {}
 
   micromatch@4.0.8:
@@ -3653,6 +3688,8 @@ snapshots:
       is-fullwidth-code-point: 3.0.0
 
   smob@1.6.2: {}
+
+  smol-toml@1.6.1: {}
 
   source-map-js@1.2.1: {}
 
