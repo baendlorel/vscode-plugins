@@ -2,8 +2,6 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { defineConfig } from 'vite';
 import replace from '@rollup/plugin-replace';
-import nodeResolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
 
 export default defineConfig(({ mode }) => {
   const isDev = mode === 'development';
@@ -33,8 +31,6 @@ export default defineConfig(({ mode }) => {
             __IS_DEV__: JSON.stringify(isDev),
             __VERSION__: JSON.parse(json).version,
           }),
-          nodeResolve(),
-          commonjs(),
         ],
       },
       sourcemap: false,
