@@ -15,3 +15,4 @@ tests/**
 tsconfig.build.json
 pnpm-lock.yaml
 node_modules
+hidden_node_modules
