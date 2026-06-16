@@ -72,6 +72,18 @@
         "script": "build"
       },
       "cwd": "${workspaceFolder}/plugins/secret-notes"
+    },
+    {
+      "name": "启动: clautcher",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": ["--extensionDevelopmentPath=${workspaceFolder}/plugins/clautcher"],
+      "outFiles": ["${workspaceFolder}/plugins/clautcher/out/**/*.js"],
+      "preLaunchTask": {
+        "type": "npm",
+        "script": "test-build"
+      },
+      "cwd": "${workspaceFolder}/plugins/clautcher"
     }
   ]
 }
