@@ -38,18 +38,6 @@
       "cwd": "${workspaceFolder}/plugins/colorful-titlebar"
     },
     {
-      "name": "启动: jetbrains-titlebar",
-      "type": "extensionHost",
-      "request": "launch",
-      "args": ["--extensionDevelopmentPath=${workspaceFolder}/plugins/jetbrains-titlebar"],
-      "outFiles": ["${workspaceFolder}/plugins/jetbrains-titlebar/out/**/*.js"],
-      "preLaunchTask": {
-        "type": "npm",
-        "script": "test-build:jetbrains-titlebar"
-      },
-      "cwd": "${workspaceFolder}/plugins/jetbrains-titlebar"
-    },
-    {
       "name": "启动: memory-monitor",
       "type": "extensionHost",
       "request": "launch",
@@ -74,13 +62,22 @@
       "cwd": "${workspaceFolder}/plugins/secret-notes"
     },
     {
+      "name": "启动: jetbrains-titlebar",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": ["--extensionDevelopmentPath=${workspaceFolder}/plugins/jetbrains-titlebar"],
+      "outFiles": ["${workspaceFolder}/plugins/jetbrains-titlebar/out/**/*.js"],
+      "preLaunchTask": {
+        "type": "npm",
+        "script": "test-build:jetbrains-titlebar"
+      },
+      "cwd": "${workspaceFolder}/plugins/jetbrains-titlebar"
+    },
+    {
       "name": "启动: clautcher",
       "type": "extensionHost",
       "request": "launch",
-      "args": [
-        "--extensionDevelopmentPath=${workspaceFolder}/plugins/clautcher",
-        "--x=$(test-build --test-build clautcher)"
-      ],
+      "args": ["--extensionDevelopmentPath=${workspaceFolder}/plugins/clautcher"],
       "outFiles": ["${workspaceFolder}/plugins/clautcher/out/**/*.js"],
       "preLaunchTask": {
         "type": "npm",

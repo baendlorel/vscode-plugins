@@ -9,6 +9,7 @@ export default defineConfig(({ mode }) => {
   const srcDir = path.join(libPath, 'src');
   const json = readFileSync(path.join(libPath, 'package.json'), 'utf-8');
 
+  console.log('isDev', isDev);
   return {
     build: {
       emptyOutDir: true,
@@ -17,7 +18,7 @@ export default defineConfig(({ mode }) => {
         fileName: () => 'extension.js',
         formats: ['cjs'],
       },
-      minify: 'esbuild',
+      minify: isDev ? false : 'esbuild',
       outDir: 'out',
       rollupOptions: {
         external: ['vscode', /^node:/],
