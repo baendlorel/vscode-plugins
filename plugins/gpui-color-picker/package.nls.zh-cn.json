@@ -1,0 +1,5 @@
+{
+  "extension.category": "GPUI Color Picker",
+  "configuration.title": "GPUI 颜色选择器",
+  "configuration.detectPlainHexNumbers.description": "是否将独立的 6 位或 8 位 0x 十六进制字面量视作颜色。rgb(0x...) 和 rgba(0x...) 的匹配始终优先。"
+}

@@ -1,0 +1,5 @@
+{
+  "extension.category": "GPUI Color Picker",
+  "configuration.title": "GPUI Color Picker",
+  "configuration.detectPlainHexNumbers.description": "Treat standalone 6-digit and 8-digit 0x hex literals as colors. rgb(0x...) and rgba(0x...) matches always take priority."
+}

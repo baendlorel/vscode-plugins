@@ -1,0 +1,86 @@
+{
+  "name": "gpui-color-picker",
+  "displayName": "GPUI Color Picker",
+  "description": "Color picker support for GPUI-style rgb(0xRRGGBB) and rgba(0xRRGGBBAA) literals in VS Code",
+  "description_zh": "为 VS Code 提供 GPUI 风格 rgb(0xRRGGBB) 与 rgba(0xRRGGBBAA) 颜色选择支持",
+  "version": "0.1.0",
+  "purpose": "vscode-extension",
+  "publisher": "KasukabeTsumugi",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "author": {
+    "email": "futami16237@gmail.com",
+    "name": "Kasukabe Tsumugi"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "gpui",
+    "color",
+    "color picker",
+    "rgb",
+    "rgba",
+    "hex",
+    "document color provider"
+  ],
+  "homepage": "https://github.com/baendlorel/gpui-color-picker#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baendlorel/gpui-color-picker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/baendlorel/gpui-color-picker/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/icon.png",
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
+  },
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:gpuiColorPicker.openDemoDocument"
+  ],
+  "main": "./out/extension.js",
+  "extensionKind": [
+    "workspace"
+  ],
+  "contributes": {
+    "configuration": {
+      "title": "%configuration.title%",
+      "properties": {
+        "gpuiColorPicker.detectPlainHexNumbers": {
+          "type": "boolean",
+          "default": false,
+          "description": "%configuration.detectPlainHexNumbers.description%"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lines": "clear && find ./src -type f \\( -name \"*.ts\" -o -name \"*.tsx\" -o -name \"*.js\" -o -name \"*.mjs\" -o -name \"*.cjs\" -o -name \"*.cpp\" -o -name \"*.h\" -o -name \"*.py\"  -o -name \"*.css\" -o -name \"*.rs\" -o -name \"*.rc\" \\) | xargs wc -l",
+    "test-build": "vite build --mode development",
+    "build": "vite build",
+    "watch": "vite build --watch --mode development",
+    "check": "tsc --noEmit -p tsconfig.build.json",
+    "lint": "oxlint .",
+    "pub": "vsce package -o ./bin --no-dependencies",
+    "publish": "pnpm build && vsce publish"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^29.0.2",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-replace": "^6.0.3",
+    "@types/node": "^25.9.0",
+    "@vscode/vsce": "^3.9.1",
+    "oxlint": "^1.66.0",
+    "tslib": "^2.8.1",
+    "typescript": "^6.0.3",
+    "vite": "^6.3.5"
+  },
+  "dependencies": {
+    "@types/vscode": "1.74.0"
+  }
+}
