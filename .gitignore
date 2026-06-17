@@ -5,6 +5,7 @@ packages/**/dist/
 packages/**/build/
 packages/**/prebuilds/
 bin
+hidden_node_modules
 
 test.md
 # Logs
