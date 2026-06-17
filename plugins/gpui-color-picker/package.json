@@ -58,29 +58,5 @@
         }
       }
     }
-  },
-  "scripts": {
-    "lines": "clear && find ./src -type f \\( -name \"*.ts\" -o -name \"*.tsx\" -o -name \"*.js\" -o -name \"*.mjs\" -o -name \"*.cjs\" -o -name \"*.cpp\" -o -name \"*.h\" -o -name \"*.py\"  -o -name \"*.css\" -o -name \"*.rs\" -o -name \"*.rc\" \\) | xargs wc -l",
-    "test-build": "vite build --mode development",
-    "build": "vite build",
-    "watch": "vite build --watch --mode development",
-    "check": "tsc --noEmit -p tsconfig.build.json",
-    "lint": "oxlint .",
-    "pub": "vsce package -o ./bin --no-dependencies",
-    "publish": "pnpm build && vsce publish"
-  },
-  "devDependencies": {
-    "@rollup/plugin-commonjs": "^29.0.2",
-    "@rollup/plugin-node-resolve": "^16.0.3",
-    "@rollup/plugin-replace": "^6.0.3",
-    "@types/node": "^25.9.0",
-    "@vscode/vsce": "^3.9.1",
-    "oxlint": "^1.66.0",
-    "tslib": "^2.8.1",
-    "typescript": "^6.0.3",
-    "vite": "^6.3.5"
-  },
-  "dependencies": {
-    "@types/vscode": "1.74.0"
   }
 }
