@@ -16,6 +16,38 @@ Quickly switch between different Claude settings through the command palette.
 
 The extension reads all `settings.*.json` files from your `~/.claude` directory and copies the selected configuration to `settings.json`.
 
+### Settings Merging
+
+When you select a configuration file, Clautcher will automatically merge it with `settings.base.json` if it exists. The base settings provide default values that can be overridden by the selected configuration.
+
+- Create `~/.claude/settings.base.json` with common settings you want in all configurations
+- Select any `settings.*.json` file
+- Clautcher merges them using `Object.assign({}, baseSettings, selectedSettings)`
+- Selected settings take precedence over base settings
+
+Example:
+
+```json
+// settings.base.json
+{
+  "model": "claude-opus-4-8",
+  "theme": "dark"
+}
+
+// settings.work.json
+{
+  "model": "claude-sonnet-4-6"
+}
+
+// Result in settings.json after selecting "work":
+{
+  "model": "claude-sonnet-4-6",
+  "theme": "dark"
+}
+```
+
+If `settings.base.json` doesn't exist or cannot be read, Clautcher simply writes the selected configuration without merging.
+
 ## CLI Version
 
 You can also use the CLI version of Clautcher:
