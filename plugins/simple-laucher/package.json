@@ -24,13 +24,14 @@
     "workspace",
     "customization"
   ],
-  "homepage": "https://github.com/baendlorel/simple-launcher#readme",
+  "homepage": "https://github.com/baendlorel/vscode-plugins/tree/main/plugins/simple-laucher#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/baendlorel/simple-launcher.git"
+    "url": "https://github.com/baendlorel/vscode-plugins.git",
+    "directory": "plugins/simple-laucher"
   },
   "bugs": {
-    "url": "https://github.com/baendlorel/simple-launcher/issues"
+    "url": "https://github.com/baendlorel/vscode-plugins/issues"
   },
   "license": "MIT",
   "icon": "assets/icon.png",

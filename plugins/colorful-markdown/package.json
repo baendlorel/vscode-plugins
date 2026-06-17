@@ -24,13 +24,14 @@
     "decoration",
     "fontweight"
   ],
-  "homepage": "https://github.com/baendlorel/colorful-markdown#readme",
+  "homepage": "https://github.com/baendlorel/vscode-plugins/tree/main/plugins/colorful-markdown#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/baendlorel/colorful-markdown.git"
+    "url": "https://github.com/baendlorel/vscode-plugins.git",
+    "directory": "plugins/colorful-markdown"
   },
   "bugs": {
-    "url": "https://github.com/baendlorel/colorful-markdown/issues"
+    "url": "https://github.com/baendlorel/vscode-plugins/issues"
   },
   "license": "MIT",
   "icon": "assets/logo.png",

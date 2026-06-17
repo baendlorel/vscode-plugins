@@ -20,13 +20,14 @@
     "workspace",
     "customization"
   ],
-  "homepage": "https://github.com/baendlorel/colorful-titlebar#readme",
+  "homepage": "https://github.com/baendlorel/vscode-plugins/tree/main/plugins/colorful-titlebar#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/baendlorel/colorful-titlebar.git"
+    "url": "https://github.com/baendlorel/vscode-plugins.git",
+    "directory": "plugins/colorful-titlebar"
   },
   "bugs": {
-    "url": "https://github.com/baendlorel/colorful-titlebar/issues"
+    "url": "https://github.com/baendlorel/vscode-plugins/issues"
   },
   "license": "MIT",
   "icon": "assets/icon.png",

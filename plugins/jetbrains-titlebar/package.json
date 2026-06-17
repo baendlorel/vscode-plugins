@@ -24,13 +24,14 @@
     "workspace",
     "customization"
   ],
-  "homepage": "https://github.com/baendlorel/jetbrains-titlebar#readme",
+  "homepage": "https://github.com/baendlorel/vscode-plugins/tree/main/plugins/jetbrains-titlebar#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/baendlorel/jetbrains-titlebar.git"
+    "url": "https://github.com/baendlorel/vscode-plugins.git",
+    "directory": "plugins/jetbrains-titlebar"
   },
   "bugs": {
-    "url": "https://github.com/baendlorel/jetbrains-titlebar/issues"
+    "url": "https://github.com/baendlorel/vscode-plugins/issues"
   },
   "license": "MIT",
   "icon": "assets/idea.png",

@@ -18,6 +18,15 @@
     "Other"
   ],
   "keywords": [],
+  "homepage": "https://github.com/baendlorel/vscode-plugins/tree/main/plugins/clautcher#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baendlorel/vscode-plugins.git",
+    "directory": "plugins/clautcher"
+  },
+  "bugs": {
+    "url": "https://github.com/baendlorel/vscode-plugins/issues"
+  },
   "license": "MIT",
   "activationEvents": [
     "onStartupFinished"

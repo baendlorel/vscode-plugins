@@ -24,8 +24,14 @@
     "notes",
     "text"
   ],
+  "homepage": "https://github.com/baendlorel/vscode-plugins/tree/main/plugins/secret-notes#readme",
   "repository": {
-    "url": "https://github.com/baendlorel/secret-notes"
+    "type": "git",
+    "url": "https://github.com/baendlorel/vscode-plugins.git",
+    "directory": "plugins/secret-notes"
+  },
+  "bugs": {
+    "url": "https://github.com/baendlorel/vscode-plugins/issues"
   },
   "license": "MIT",
   "icon": "assets/logo.png",
