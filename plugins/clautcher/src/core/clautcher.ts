@@ -9,6 +9,11 @@ interface PartialSettings {
 }
 
 export const select = async () => {
+  const readJson = async (p: string): Promise<PartialSettings> => {
+    const content = await readFile(p, 'utf-8');
+    return JSON.parse(content);
+  };
+
   try {
     const CLAUDE_PATH = join(homedir(), '.claude');
     if (!existsSync(CLAUDE_PATH)) {
@@ -17,7 +22,9 @@ export const select = async () => {
     }
 
     const files = readdirSync(CLAUDE_PATH)
-      .filter((v) => v.startsWith('settings.') && v.endsWith('.json') && v.length !== 13)
+      .filter(
+        (v) => v.startsWith('settings.') && v.endsWith('.json') && v !== 'settings.json' && v !== 'settings.base.json',
+      )
       .map((v) => v.replace(/^settings./, '').replace(/.json$/, ''));
 
     if (__IS_DEV__) {
