@@ -2,41 +2,48 @@ import vscode from 'vscode';
 import { existsSync, readdirSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { readFile, writeFile } from 'node:fs/promises';
+import { join } from 'node:path';
+
+interface PartialSettings {
+  clautcher_activated_settings: string;
+}
 
 export const select = async () => {
-  const CLAUDE_PATH = homedir().join('.claude');
-  if (!existsSync(CLAUDE_PATH)) {
-    vscode.window.showWarningMessage(`.claude directory not exist: ${CLAUDE_PATH}`);
-    return;
+  try {
+    const CLAUDE_PATH = join(homedir(), '.claude');
+    if (!existsSync(CLAUDE_PATH)) {
+      vscode.window.showWarningMessage(`.claude directory not exist: ${CLAUDE_PATH}`);
+      return;
+    }
+
+    const files = readdirSync(CLAUDE_PATH)
+      .filter((v) => v.startsWith('settings.') && v.endsWith('.json') && v.length !== 13)
+      .map((v) => v.replace(/^settings./, '').replace(/.json$/, ''));
+
+    if (__IS_DEV__) {
+      vscode.window.showInformationMessage(`${CLAUDE_PATH}   ${files.join('|  ')}`);
+    }
+
+    const settingsContent = await readFile(join(CLAUDE_PATH, 'settings.json'));
+    const s = JSON.parse(settingsContent.toString()) as PartialSettings;
+
+    const action = await vscode.window.showQuickPick(
+      files.map((v) => ({ label: v === s.clautcher_activated_settings ? `$(check)${v}` : v })),
+      {
+        placeHolder: 'Choose a settings file',
+      },
+    );
+
+    if (action === undefined) {
+      return;
+    }
+
+    const content = await readFile(join(CLAUDE_PATH, action.label), 'utf-8');
+    const newJson = JSON.parse(content) as PartialSettings;
+    newJson.clautcher_activated_settings = action.label;
+    await writeFile(join(CLAUDE_PATH, 'settings.json'), JSON.stringify(newJson, null, 2));
+    vscode.window.showInformationMessage(`${action.label} is used`);
+  } catch (e) {
+    vscode.window.showErrorMessage((e as Error)?.message || String(e));
   }
-
-  const files = readdirSync(CLAUDE_PATH).filter((v) => /^settings.[\S].json$/g.test(v));
-  const action = await vscode.window.showQuickPick(
-    files.map((v) => ({ label: v })),
-    {
-      placeHolder: 'Choose a settings file',
-      ignoreFocusOut: true,
-    },
-  );
-
-  if (action === undefined) {
-    return;
-  }
-
-  const nullReturn = (e: Error) => {
-    vscode.window.showErrorMessage(e?.message || String(e));
-    return null;
-  };
-
-  const content = await readFile(CLAUDE_PATH.join(action.label)).catch(nullReturn);
-  if (content === null) {
-    return;
-  }
-
-  const writeResult = await writeFile(CLAUDE_PATH.join('settings.json'), content).catch(nullReturn);
-  if (writeResult === null) {
-    return;
-  }
-
-  vscode.window.showInformationMessage(`${action.label} is used`);
 };
