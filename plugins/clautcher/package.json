@@ -13,6 +13,7 @@
     "email": "futami16237@gmail.com",
     "name": "Kasukabe Tsumugi"
   },
+  "icon": "assets/icon.png",
   "categories": [
     "Other"
   ],
@@ -23,7 +24,13 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
-    "commands": [],
+    "commands": [
+      {
+        "command": "clautcher.list",
+        "title": "List Claude Settings",
+        "category": "Clautcher"
+      }
+    ],
     "configuration": {
       "title": "%configuration.title%",
       "properties": {}
