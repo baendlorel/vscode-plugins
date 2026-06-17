@@ -38,7 +38,7 @@ export const select = async () => {
       return;
     }
 
-    const content = await readFile(join(CLAUDE_PATH, action.label), 'utf-8');
+    const content = await readFile(join(CLAUDE_PATH, `settings.${action.label}.json`), 'utf-8');
     const newJson = JSON.parse(content) as PartialSettings;
     newJson.clautcher_activated_settings = action.label;
     await writeFile(join(CLAUDE_PATH, 'settings.json'), JSON.stringify(newJson, null, 2));
