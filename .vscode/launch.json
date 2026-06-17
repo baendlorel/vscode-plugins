@@ -82,12 +82,10 @@
         "--x=$(test-build --test-build clautcher)"
       ],
       "outFiles": ["${workspaceFolder}/plugins/clautcher/out/**/*.js"],
-      // "preLaunchTask": {
-      //   "type": "npm",
-      //   "script": "test-build"
-      // },
-      "preLaunchTask": {},
-
+      "preLaunchTask": {
+        "type": "npm",
+        "script": "test-build:clautcher"
+      },
       "cwd": "${workspaceFolder}/plugins/clautcher"
     }
   ]
