@@ -1,5 +1,5 @@
 import { execSync } from 'node:child_process';
-import { existsSync, mkdirSync, renameSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, renameSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { getPackageInfo } from './common/package-info.js';
@@ -30,17 +30,28 @@ export function publish(who: string | undefined, options: { ovsx?: boolean; vsce
     renameSync(nm1, nm0);
   }
 
-  if (options.vsce) {
-    execSync(`vsce publish --ignoreFile ${ignoreFile}`, {
-      stdio: 'inherit',
-      cwd: info.path,
-    });
+  // find the newest .vsix file in the bin directory
+  const newest = readdirSync(binPath)
+    .filter((f) => f.endsWith('.vsix'))
+    .map((f) => ({ file: f, time: statSync(join(binPath, f)).mtime.getTime() }))
+    .reduce((a, b) => (a.time > b.time ? a : b), { file: '', time: 0 });
+
+  if (!newest.file) {
+    console.error('No .vsix file found in bin directory.');
+    process.exit(1);
   }
 
-  if (options.ovsx) {
-    execSync(`ovsx publish --pat ${env.OVSX_TOKEN}`, {
-      stdio: 'inherit',
-      cwd: info.path,
-    });
-  }
+  // if (options.vsce) {
+  //   execSync(`vsce publish --ignoreFile ${ignoreFile}`, {
+  //     stdio: 'inherit',
+  //     cwd: info.path,
+  //   });
+  // }
+
+  // if (options.ovsx) {
+  //   execSync(`ovsx publish ${join(binPath, newest.file)} --pat ${env.OVSX_TOKEN}`, {
+  //     stdio: 'inherit',
+  //     cwd: info.path,
+  //   });
+  // }
 }
