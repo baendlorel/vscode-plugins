@@ -6,6 +6,7 @@ packages/**/build/
 packages/**/prebuilds/
 bin
 hidden_node_modules
+.env.json
 
 test.md
 # Logs

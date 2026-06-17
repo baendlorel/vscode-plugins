@@ -5,7 +5,9 @@ import { join } from 'node:path';
 import { getPackageInfo } from './common/package-info.js';
 import { build } from './build.js';
 
-export function publish(who: string | undefined) {
+import env from '../.env.json';
+
+export function publish(who: string | undefined, options: { ovsx?: boolean; vsce?: boolean } = {}) {
   const info = getPackageInfo(who);
   build(who);
 
@@ -26,5 +28,19 @@ export function publish(who: string | undefined) {
 
   if (existsSync(nm1)) {
     renameSync(nm1, nm0);
+  }
+
+  if (options.vsce) {
+    execSync(`vsce publish --ignoreFile ${ignoreFile}`, {
+      stdio: 'inherit',
+      cwd: info.path,
+    });
+  }
+
+  if (options.ovsx) {
+    execSync(`ovsx publish --pat ${env.OVSX_TOKEN}`, {
+      stdio: 'inherit',
+      cwd: info.path,
+    });
   }
 }

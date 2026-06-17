@@ -28,8 +28,7 @@
 		"watch": "tsc -watch -p tsconfig.build.json",
 		"check": "tsc -p tsconfig.build.json --noEmit",
 		"lines": "tsx ./scripts/lines.ts",
-		"lint": "oxlint .",
-		"publish": "pnpm build && vsce publish"
+		"lint": "oxlint ."
 	},
 	"license": "MIT",
 	"devDependencies": {
