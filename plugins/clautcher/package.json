@@ -26,9 +26,9 @@
   "contributes": {
     "commands": [
       {
-        "command": "clautcher.list",
-        "title": "List Claude Settings",
-        "category": "Clautcher"
+        "command": "clautcher.select",
+        "title": "%command.clautcher.select%",
+        "category": "%command.category%"
       }
     ],
     "configuration": {

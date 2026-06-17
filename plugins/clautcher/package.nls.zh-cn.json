@@ -1,4 +1,6 @@
 {
   "extension.category": "Clautcher",
-  "configuration.title": "Clautcher"
+  "configuration.title": "Clautcher",
+  "command.category": "Clautcher",
+  "command.clautcher.select": "选择 Claude 设置"
 }

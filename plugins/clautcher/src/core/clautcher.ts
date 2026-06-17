@@ -3,7 +3,7 @@ import { existsSync, readdirSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { readFile, writeFile } from 'node:fs/promises';
 
-export const list = async () => {
+export const select = async () => {
   const CLAUDE_PATH = homedir().join('.claude');
   if (!existsSync(CLAUDE_PATH)) {
     vscode.window.showWarningMessage(`.claude directory not exist: ${CLAUDE_PATH}`);

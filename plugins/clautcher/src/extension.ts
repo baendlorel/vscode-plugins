@@ -1,5 +1,5 @@
 import vscode from 'vscode';
-import { list } from './core/clautcher';
+import { select } from './core/clautcher';
 
 export const activate = async (context: vscode.ExtensionContext) => {
   console.log('Clautcher extension is now active!');
@@ -8,7 +8,7 @@ export const activate = async (context: vscode.ExtensionContext) => {
     vscode.window.showInformationMessage('Clautcher activated!');
   }
 
-  context.subscriptions.push(vscode.commands.registerCommand('clautcher.list', list));
+  context.subscriptions.push(vscode.commands.registerCommand('clautcher.select', select));
 };
 
 export const deactivate = () => {};
