@@ -14,37 +14,40 @@ const readJson = async (p: string): Promise<PartialSettings> => {
 };
 const CLAUDE_PATH = join(homedir(), '.claude');
 
+const pick = async () => {
+  if (!existsSync(CLAUDE_PATH)) {
+    vscode.window.showWarningMessage(`.claude directory not exist: ${CLAUDE_PATH}`);
+    return;
+  }
+
+  const files = readdirSync(CLAUDE_PATH)
+    .filter(
+      (v) => v.startsWith('settings.') && v.endsWith('.json') && v !== 'settings.json' && v !== 'settings.base.json',
+    )
+    .map((v) => v.replace(/^settings./, '').replace(/.json$/, ''));
+
+  if (__IS_DEV__) {
+    vscode.window.showInformationMessage(`${CLAUDE_PATH}   ${files.join('|  ')}`);
+  }
+
+  const current = await readJson(join(CLAUDE_PATH, 'settings.json'));
+
+  const action = await vscode.window.showQuickPick(
+    files.map((v) => ({ label: v === current.clautcher_activated_settings ? `$(check)${v}` : v })),
+    {
+      placeHolder: 'Choose a settings file',
+    },
+  );
+
+  return action?.label;
+};
+
 export const select = async () => {
   try {
-    if (!existsSync(CLAUDE_PATH)) {
-      vscode.window.showWarningMessage(`.claude directory not exist: ${CLAUDE_PATH}`);
-      return;
+    const name = await pick();
+    if (name) {
+      await use(name);
     }
-
-    const files = readdirSync(CLAUDE_PATH)
-      .filter(
-        (v) => v.startsWith('settings.') && v.endsWith('.json') && v !== 'settings.json' && v !== 'settings.base.json',
-      )
-      .map((v) => v.replace(/^settings./, '').replace(/.json$/, ''));
-
-    if (__IS_DEV__) {
-      vscode.window.showInformationMessage(`${CLAUDE_PATH}   ${files.join('|  ')}`);
-    }
-
-    const current = await readJson(join(CLAUDE_PATH, 'settings.json'));
-
-    const action = await vscode.window.showQuickPick(
-      files.map((v) => ({ label: v === current.clautcher_activated_settings ? `$(check)${v}` : v })),
-      {
-        placeHolder: 'Choose a settings file',
-      },
-    );
-
-    if (action === undefined) {
-      return;
-    }
-
-    await use(action.label);
   } catch (e) {
     vscode.window.showErrorMessage((e as Error)?.message || String(e));
   }
