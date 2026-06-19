@@ -20,7 +20,7 @@ export function publish(who: string | undefined, options: { ovsx?: boolean; vsce
     renameSync(nm0, nm1);
   }
 
-  const ignoreFile = join(import.meta.dirname, '..', 'configs', '.vscodeignore');
+  const ignoreFile = join(import.meta.dirname, '..', '.vscodeignore');
   execSync(`vsce package --ignoreFile ${ignoreFile} -o ${binPath}`, {
     stdio: 'inherit',
     cwd: info.path,

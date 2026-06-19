@@ -12,7 +12,7 @@ export function build(who: string | undefined, isTestBuild = false) {
     return;
   }
 
-  const viteConfig = join(import.meta.dirname, '..', 'configs', 'vite.config.ts');
+  const viteConfig = join(import.meta.dirname, '..', 'vite.config.ts');
 
   execSync(`vite build --config ${viteConfig} ${info.path} ${isTestBuild ? '--mode development' : ''}`, {
     stdio: 'inherit',

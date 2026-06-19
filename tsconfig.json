@@ -11,11 +11,5 @@
       "@shared/*": ["../_shared/*"]
     }
   },
-  "include": [
-    "*.config.ts",
-    "scripts/**/*.ts",
-    "rollup.config.ts",
-    "configs/vitest.config.ts",
-    "configs/vite.config.ts"
-  ]
+  "include": ["*.config.ts", "scripts/**/*.ts", "rollup.config.ts", "vitest.config.ts", "vite.config.ts"]
 }
