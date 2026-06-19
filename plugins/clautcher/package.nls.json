@@ -2,5 +2,8 @@
   "extension.category": "Clautcher",
   "configuration.title": "Clautcher",
   "command.category": "Clautcher",
-  "command.clautcher.select": "Select Claude settings"
+  "command.clautcher.select": "Select Claude settings",
+  "command.clautcher.set-default": "Set default Claude settings",
+  "config.clautcher.default_clautcher_settings.title": "Default Claude Settings",
+  "config.clautcher.default_clautcher_settings.description": "The settings profile to activate on VSCode startup"
 }

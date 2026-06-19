@@ -1,16 +1,22 @@
 import vscode from 'vscode';
-import { existsSync, readdirSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { homedir } from 'node:os';
-import { readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 interface PartialSettings {
   clautcher_activated_settings?: string;
 }
 
-const readJson = async (p: string): Promise<PartialSettings> => {
-  const content = await readFile(p, 'utf-8');
-  return JSON.parse(content);
+const readJson = (p: string, muted = false): PartialSettings => {
+  try {
+    const content = readFileSync(p, 'utf-8');
+    return JSON.parse(content);
+  } catch (e) {
+    if (!muted) {
+      vscode.window.showErrorMessage(`Failed to read JSON from ${p}: ${(e as Error)?.message || String(e)}`);
+    }
+    return {};
+  }
 };
 const CLAUDE_PATH = join(homedir(), '.claude');
 
@@ -30,7 +36,7 @@ const pick = async () => {
     vscode.window.showInformationMessage(`${CLAUDE_PATH}   ${files.join('|  ')}`);
   }
 
-  const current = await readJson(join(CLAUDE_PATH, 'settings.json'));
+  const current = readJson(join(CLAUDE_PATH, 'settings.json'));
 
   const action = await vscode.window.showQuickPick(
     files.map((v) => ({ label: v === current.clautcher_activated_settings ? `$(check)${v}` : v })),
@@ -46,20 +52,34 @@ export const select = async () => {
   try {
     const name = await pick();
     if (name) {
-      await use(name);
+      use(name);
     }
   } catch (e) {
     vscode.window.showErrorMessage((e as Error)?.message || String(e));
   }
 };
 
-export const use = async (name: string) => {
-  const target = await readJson(join(CLAUDE_PATH, `settings.${name}.json`));
+export const setDefault = async () => {
+  try {
+    const name = await pick();
+    if (name) {
+      vscode.workspace
+        .getConfiguration('clautcher')
+        .update('default_clautcher_settings', name, vscode.ConfigurationTarget.Workspace);
+      use(name);
+    }
+  } catch (e) {
+    vscode.window.showErrorMessage((e as Error)?.message || String(e));
+  }
+};
+
+export const use = (name: string) => {
+  const target = readJson(join(CLAUDE_PATH, `settings.${name}.json`));
   target.clautcher_activated_settings = name;
 
-  const base = await readJson(join(CLAUDE_PATH, 'settings.base.json')).catch(() => ({}) as PartialSettings);
+  const base = readJson(join(CLAUDE_PATH, 'settings.base.json'), true);
 
   const mergedSettings = Object.assign({}, base, target);
-  await writeFile(join(CLAUDE_PATH, 'settings.json'), JSON.stringify(mergedSettings, null, 2));
+  writeFileSync(join(CLAUDE_PATH, 'settings.json'), JSON.stringify(mergedSettings, null, 2));
   vscode.window.showInformationMessage(`${name} is used`);
 };

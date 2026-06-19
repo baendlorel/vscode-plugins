@@ -2,5 +2,8 @@
   "extension.category": "Clautcher",
   "configuration.title": "Clautcher",
   "command.category": "Clautcher",
-  "command.clautcher.select": "选择 Claude 设置"
+  "command.clautcher.select": "选择 Claude 设置",
+  "command.clautcher.set-default": "设置默认 Claude 配置",
+  "config.clautcher.default_clautcher_settings.title": "默认 Claude 配置",
+  "config.clautcher.default_clautcher_settings.description": "VSCode 启动时自动激活的配置文件名称"
 }
