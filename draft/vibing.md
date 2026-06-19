@@ -1,1 +1,4 @@
-完成这两个函数：
+clautcher子包新功能：
+1、新增一个设置项，名字叫clautcher_activated_settings。类型是string
+2、这个设置项代表着每次开启vscode的时候，会读取它，并调用plugins/clautcher/src/core/clautcher.ts里的use函数；
+请先你说说你对此功能的理解和实现思路

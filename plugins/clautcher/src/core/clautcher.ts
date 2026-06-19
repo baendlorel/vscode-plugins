@@ -8,14 +8,14 @@ interface PartialSettings {
   clautcher_activated_settings?: string;
 }
 
-export const select = async () => {
-  const readJson = async (p: string): Promise<PartialSettings> => {
-    const content = await readFile(p, 'utf-8');
-    return JSON.parse(content);
-  };
+const readJson = async (p: string): Promise<PartialSettings> => {
+  const content = await readFile(p, 'utf-8');
+  return JSON.parse(content);
+};
+const CLAUDE_PATH = join(homedir(), '.claude');
 
+export const select = async () => {
   try {
-    const CLAUDE_PATH = join(homedir(), '.claude');
     if (!existsSync(CLAUDE_PATH)) {
       vscode.window.showWarningMessage(`.claude directory not exist: ${CLAUDE_PATH}`);
       return;
@@ -44,15 +44,19 @@ export const select = async () => {
       return;
     }
 
-    const target = await readJson(join(CLAUDE_PATH, `settings.${action.label}.json`));
-    target.clautcher_activated_settings = action.label;
-
-    const base = await readJson(join(CLAUDE_PATH, 'settings.base.json')).catch(() => ({}) as PartialSettings);
-
-    const mergedSettings = Object.assign({}, base, target);
-    await writeFile(join(CLAUDE_PATH, 'settings.json'), JSON.stringify(mergedSettings, null, 2));
-    vscode.window.showInformationMessage(`${action.label} is used`);
+    await use(action.label);
   } catch (e) {
     vscode.window.showErrorMessage((e as Error)?.message || String(e));
   }
+};
+
+export const use = async (name: string) => {
+  const target = await readJson(join(CLAUDE_PATH, `settings.${name}.json`));
+  target.clautcher_activated_settings = name;
+
+  const base = await readJson(join(CLAUDE_PATH, 'settings.base.json')).catch(() => ({}) as PartialSettings);
+
+  const mergedSettings = Object.assign({}, base, target);
+  await writeFile(join(CLAUDE_PATH, 'settings.json'), JSON.stringify(mergedSettings, null, 2));
+  vscode.window.showInformationMessage(`${name} is used`);
 };
