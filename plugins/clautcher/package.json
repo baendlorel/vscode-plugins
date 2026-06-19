@@ -3,7 +3,7 @@
   "displayName": "Clautcher",
   "description": "A VS Code extensions for clautcher in npm",
   "description_zh": "Clautcher（一个 npm 包 ） 的 VS Code 扩展版",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "purpose": "vscode-extension",
   "publisher": "KasukabeTsumugi",
   "engines": {
@@ -53,6 +53,12 @@
           "default": "",
           "title": "%config.clautcher.default_clautcher_settings.title%",
           "description": "%config.clautcher.default_clautcher_settings.description%"
+        },
+        "clautcher.prevent_auto_switch": {
+          "type": "boolean",
+          "default": false,
+          "title": "%config.clautcher.prevent_auto_switch.title%",
+          "description": "%config.clautcher.prevent_auto_switch.description%"
         }
       }
     }

@@ -16,6 +16,33 @@ Quickly switch between different Claude settings through the command palette.
 
 The extension reads all `settings.*.json` files from your `~/.claude` directory and copies the selected configuration to `settings.json`.
 
+### Commands
+
+- **Clautcher: Select Claude Settings** - Temporarily switch to a Claude settings profile
+- **Clautcher: Set Default Claude Settings** - Set a default settings profile and activate it
+
+### Settings
+
+#### Default Claude Settings (`clautcher.default_clautcher_settings`)
+
+The settings profile to automatically activate on VSCode startup.
+
+When this setting is configured, Clautcher will:
+- Save your current settings on startup
+- Automatically switch to the specified default profile
+- Restore your original settings when VSCode closes
+
+**Example**: Set to `"work"` to automatically use your work configuration when VSCode starts.
+
+#### Prevent Auto Switch (`clautcher.prevent_auto_switch`)
+
+When enabled, prevents automatic switching to the default settings on VSCode startup.
+
+- **Default**: `false` (auto-switch is enabled)
+- Set to `true` to disable automatic switching
+
+This is useful when you want to keep the `default_clautcher_settings` configured but temporarily prevent automatic switching.
+
 ### Settings Merging
 
 When you select a configuration file, Clautcher will automatically merge it with `settings.base.json` if it exists. The base settings provide default values that can be overridden by the selected configuration.

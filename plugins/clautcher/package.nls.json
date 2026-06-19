@@ -5,5 +5,7 @@
   "command.clautcher.select": "Select Claude settings",
   "command.clautcher.set-default": "Set default Claude settings",
   "config.clautcher.default_clautcher_settings.title": "Default Claude Settings",
-  "config.clautcher.default_clautcher_settings.description": "The settings profile to activate on VSCode startup"
+  "config.clautcher.default_clautcher_settings.description": "The settings profile to activate on VSCode startup",
+  "config.clautcher.prevent_auto_switch.title": "Prevent Auto Switch",
+  "config.clautcher.prevent_auto_switch.description": "Prevent automatically switching to the default settings on VSCode startup"
 }

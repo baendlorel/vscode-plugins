@@ -23,8 +23,9 @@ export const activate = (context: vscode.ExtensionContext) => {
   // Activate default settings on startup
   const config = vscode.workspace.getConfiguration('clautcher');
   const defaultSettings = config.get<string>('default_clautcher_settings', '');
+  const preventAutoSwitch = config.get<boolean>('prevent_auto_switch', false);
 
-  if (defaultSettings) {
+  if (defaultSettings && !preventAutoSwitch) {
     // Record current settings before switching
     if (existsSync(SETTINGS_PATH)) {
       const content = readFileSync(SETTINGS_PATH, 'utf-8');
@@ -32,7 +33,7 @@ export const activate = (context: vscode.ExtensionContext) => {
       originalSettings = parsed.clautcher_activated_settings || null;
     }
 
-    use(defaultSettings);
+    use(defaultSettings, true);
   }
 };
 

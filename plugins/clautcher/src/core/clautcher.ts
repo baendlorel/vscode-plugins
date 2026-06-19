@@ -73,7 +73,7 @@ export const setDefault = async () => {
   }
 };
 
-export const use = (name: string) => {
+export const use = (name: string, autoSwitch = false) => {
   const target = readJson(join(CLAUDE_PATH, `settings.${name}.json`));
   target.clautcher_activated_settings = name;
 
@@ -81,5 +81,10 @@ export const use = (name: string) => {
 
   const mergedSettings = Object.assign({}, base, target);
   writeFileSync(join(CLAUDE_PATH, 'settings.json'), JSON.stringify(mergedSettings, null, 2));
-  vscode.window.showInformationMessage(`${name} is used`);
+
+  if (autoSwitch) {
+    vscode.window.showInformationMessage(`已切换为 ${name} 配置，关闭后将自动切回`);
+  } else {
+    vscode.window.showInformationMessage(`${name} is used`);
+  }
 };
