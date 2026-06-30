@@ -1,7 +1,7 @@
 import { readdirSync } from 'node:fs';
 import path from 'node:path';
 
-const packagesDir = path.join(import.meta.dirname, '..', 'packages');
+const packagesDir = path.join(import.meta.dirname, '..', 'plugins');
 
 export const getAliases = () => {
   const packageDirs = readdirSync(packagesDir);

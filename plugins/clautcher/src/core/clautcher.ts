@@ -39,13 +39,13 @@ const pick = async () => {
   const current = readJson(join(CLAUDE_PATH, 'settings.json'));
 
   const action = await vscode.window.showQuickPick(
-    files.map((v) => ({ label: v === current.clautcher_activated_settings ? `$(check)${v}` : v })),
+    files.map((v) => ({ label: v === current.clautcher_activated_settings ? `$(check)${v}` : v, value: v })),
     {
       placeHolder: 'Choose a settings file',
     },
   );
 
-  return action?.label;
+  return action?.value;
 };
 
 export const select = async () => {
